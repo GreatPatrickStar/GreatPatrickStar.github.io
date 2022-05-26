@@ -93,115 +93,12 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="mysql查询数据的总记录数"><a href="#mysql查询数据的总记录数" class="headerlink" title="mysql查询数据的总记录数"></a>mysql查询数据的总记录数</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/w5wangdeqing/article/details/113613707">https://blog.csdn.net/w5wangdeqing/article/details/113613707</a></p>
-</blockquote>
-<blockquote>
-<p>领导让获取数据库中的所有记录总数，网上查了一会，看到了很多都是不能执行，我这小性子安耐不住了，开始暴怒，最后的最后看下来应该缺少了一个关键字，还自以为是的想不知道是不是mysql版本导致的这个问题。道行不深，继续修炼。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">语句一定要这么写，首先use information_schema</span><br><span class="line">1</span><br><span class="line">USE information_schema;</span><br><span class="line">-- 查询所有表的记录数</span><br><span class="line">SELECT SUM(table_rows) FROM TABLES WHERE TABLE_SCHEMA = &#x27;testdb&#x27; ORDER BY table_rows DESC; </span><br><span class="line">-- 或者这么写</span><br><span class="line">SELECT SUM(table_rows) FROM information_schema.TABLES WHERE TABLE_SCHEMA = &#x27;testdb&#x27; ORDER BY table_rows DESC; </span><br><span class="line">-- 查询该schema下的所有表数量</span><br><span class="line">SELECT count(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA = &#x27;testdb&#x27; ORDER BY table_rows DESC; </span><br><span class="line"></span><br><span class="line">12345678</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果查询<strong>分布式数据库</strong>的<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=schema&spm=1001.2101.3001.7020">schema</a>，则可能需要where语句用like TABLE_SCHEMA ‘testdb%’ 因为分布式数据库会有很多个schema，这个需要留意</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如您想查询系统相关的信息可以从这个information_schema.TABLES表中去查询</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>table_catalog</td>
-<td>数据表登记目录</td>
-</tr>
-<tr>
-<td>table_schema</td>
-<td>数据表所属的数据库名,注意分部署数据库会有多个分片数据库</td>
-</tr>
-<tr>
-<td>table_name</td>
-<td>表名称，数据库中对应的表名称</td>
-</tr>
-<tr>
-<td>table_type</td>
-<td>表类型[system view|base table]</td>
-</tr>
-<tr>
-<td>engine</td>
-<td>使用的数据库引擎[MyISAM|CSV|InnoDB],创建表时指定的数据库引擎</td>
-</tr>
-<tr>
-<td>version</td>
-<td>版本，默认值10</td>
-</tr>
-<tr>
-<td>row_format</td>
-<td>行格式[Compact|Dynamic|Fixed]</td>
-</tr>
-<tr>
-<td>table_rows</td>
-<td>表里所存多少行数据</td>
-</tr>
-<tr>
-<td>avg_row_length</td>
-<td>平均行长度</td>
-</tr>
-<tr>
-<td>data_length</td>
-<td>数据长度</td>
-</tr>
-<tr>
-<td>max_data_length</td>
-<td>最大数据长度</td>
-</tr>
-<tr>
-<td>index_length</td>
-<td>索引长度</td>
-</tr>
-<tr>
-<td>data_free</td>
-<td>空间碎片</td>
-</tr>
-<tr>
-<td>auto_increment</td>
-<td>做自增主键的自动增量当前值</td>
-</tr>
-<tr>
-<td>create_time</td>
-<td>表的创建时间</td>
-</tr>
-<tr>
-<td>update_time</td>
-<td>表的更新时间</td>
-</tr>
-<tr>
-<td>check_time</td>
-<td>表的检查时间</td>
-</tr>
-<tr>
-<td>table_collation</td>
-<td>表的字符校验编码集</td>
-</tr>
-<tr>
-<td>checksum</td>
-<td>校验和</td>
-</tr>
-<tr>
-<td>create_options</td>
-<td>创建选项</td>
-</tr>
-<tr>
-<td>table_comment</td>
-<td>表的注释、备注</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>研究此表中的特性，对统计系统中的数据有很大作用</p>
-</blockquote>
-
+        <h3 id="mysql查询数据的总记录数"><a href="#mysql查询数据的总记录数" class="headerlink" title="mysql查询数据的总记录数"></a>mysql查询数据的总记录数</h3>
+        
+          <p class="article-more-link">
+            <a href="/2022/05/26/mysql-query-sum-records/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -239,108 +136,15 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <blockquote>
+        <h2 id="Hexo系列-Hexo的基本使用"><a href="#Hexo系列-Hexo的基本使用" class="headerlink" title="Hexo系列 | Hexo的基本使用"></a>Hexo系列 | Hexo的基本使用</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/85037427">https://zhuanlan.zhihu.com/p/85037427</a></p>
 </blockquote>
-<h2 id="Hexo系列-Hexo的基本使用"><a href="#Hexo系列-Hexo的基本使用" class="headerlink" title="Hexo系列 | Hexo的基本使用"></a>Hexo系列 | Hexo的基本使用</h2><h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h3><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a>是一个快速、简洁且高效的博客框架。Hexo 使用 <a target="_blank" rel="noopener" href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。即把用户的markdown文件，按照指定的主题解析成静态网页。</p>
-<h3 id="2-安装hexo"><a href="#2-安装hexo" class="headerlink" title="2. 安装hexo"></a>2. 安装hexo</h3><p>安装使用hexo之前需要先安装Node.js和Git，当已经安装了Node.js和npm(npm是node.js的包管理工具)，可以通过以下命令安装hexo</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<p>可以通过以下命令查看主机中是否安装了node.js和npm</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node --version    <span class="comment">#检查是否安装了node.js</span></span><br><span class="line">$ npm --version     <span class="comment">#检查是否安装了npm</span></span><br></pre></td></tr></table></figure>
-
-<p>如下所示表示已经安装了node.js和npm</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@***:~<span class="comment"># node --version</span></span><br><span class="line">v8.11.3</span><br><span class="line">root@***:~<span class="comment"># npm --version</span></span><br><span class="line">6.7.0</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="3-建站"><a href="#3-建站" class="headerlink" title="3. 建站"></a>3. 建站</h3><p>安装完Hexo之后，执行下列命令，Hexo将会在指定目录中新建所需要的文件，指定的目录即为Hexo的工作站</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-
-<p>新建完成之后，指定目录中的情况如下</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-1-config-yml"><a href="#3-1-config-yml" class="headerlink" title="3.1. _config.yml"></a>3.1. _config.yml</h3><p>网站的配置信息，您可以在此配置大部分的参数。 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">配置参数讲解</a></p>
-<h3 id="3-2-package-json"><a href="#3-2-package-json" class="headerlink" title="3.2. package.json"></a>3.2. package.json</h3><p>应用程序的信息，以及需要安装的模块信息。</p>
-<h3 id="3-3-scaffolds"><a href="#3-3-scaffolds" class="headerlink" title="3.3. scaffolds"></a>3.3. scaffolds</h3><p>模版文件夹。新建文章时，Hexo 会根据 scaffold 中的模板文件来建立新的文件。<strong>Hexo的模板是指在新建的markdown文件中默认填充的内容</strong>。例如，如果修改scaffold&#x2F;post.md中的Front-matter内容，那么每次新建一篇文章时都会包含这个修改。也就是说，通过hexo命令每新建一个文章，都会包含指定模板文件中的内容。</p>
-<p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/templates">官网模板详述</a></p>
-<h3 id="3-4-source"><a href="#3-4-source" class="headerlink" title="3.4. source"></a>3.4. source</h3><p>资源文件夹是存放用户资源的地方，如markdown文章。<strong>Markdown 和 HTML 文件会被解析并放到 <code>public</code> 文件夹</strong>，而其他文件会被拷贝过去。</p>
-<blockquote>
-<p>注意：除 <code>_posts</code> 文件夹之外，开头命名为 <code>_</code> (下划线)的文件 &#x2F; 文件夹和隐藏的文件将会被忽略。</p>
-</blockquote>
-<h3 id="3-5-themes"><a href="#3-5-themes" class="headerlink" title="3.5. themes"></a>3.5. themes</h3><p>主题文件夹。Hexo 会根据主题来解析source目录中的markdown文件生成静态页面。<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/themes">官网主题详述</a></p>
-<h3 id="4-写作"><a href="#4-写作" class="headerlink" title="4. 写作"></a>4. 写作</h3><p>可以执行下列命令来创建一篇新文章。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<p>可以在命令中指定文章的布局（layout），不指定默认为 <code>post</code>，也可以通过修改 <code>_config.yml</code> 中的 <code>default_layout</code> 参数来指定默认布局。<strong>创建的新文章会自动加上指定布局对应的模板文件中的内容。</strong></p>
-<h3 id="4-1-布局（Layout）"><a href="#4-1-布局（Layout）" class="headerlink" title="4.1. 布局（Layout）"></a>4.1. 布局（Layout）</h3><p>Hexo 有三种默认布局：<code>post</code>、<code>page</code> 和 <code>draft</code>，它们分别对应不同的路径，而自定义的其他布局和 <code>post</code> 相同，都将储存到 <code>source/_posts</code> 文件夹。</p>
-<p>布局路径<code>postsource/_postspagesourcedraftsource/_drafts</code></p>
-<blockquote>
-<p>如果你不想你的文章被处理，你可以将 Front-Matter 中的<code>layout:</code> 设为 <code>false</code> 。</p>
-</blockquote>
-<h3 id="4-2-模版（Scaffold）"><a href="#4-2-模版（Scaffold）" class="headerlink" title="4.2. 模版（Scaffold）"></a>4.2. 模版（Scaffold）</h3><p>在新建文章时，Hexo 会根据 <code>scaffolds</code> 文件夹内相对应的文件来建立文件，例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new photo <span class="string">&quot;My Gallery&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>在执行这行指令时，Hexo 会尝试在 <code>scaffolds</code> 文件夹中寻找 <code>photo.md</code>，并根据其内容建立文章</strong>，以下是您可以在模版中使用的变量：</p>
-<p>变量描述<code>layout</code>布局<code>title</code>标题<code>date</code>文件建立日期</p>
-<h3 id="4-3-Front-matter"><a href="#4-3-Front-matter" class="headerlink" title="4.3. Front-matter"></a>4.3. Front-matter</h3><p>Front-matter是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量，举例来说：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World</span><br><span class="line">date: 2013/7/13 20:46:25</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：一般Front-matter使用的yaml语法，yaml语法需要注意空格，如<code>title: Hello World</code>冒号需要有一个空格，当然除YAML 外，你也可以使用 JSON 来编写 Front-matter。</p>
-</blockquote>
-<p>以下是预先定义的参数，您可在模板中使用这些参数值并加以利用。</p>
-<p>参数描述默认值layout布局title标题date建立日期文件建立日updated更新日期文件更新日期comments开启文章的评论功能truetags标签（不适用于分页）categories分类（不适用于分页）permalink覆盖文章网址</p>
-<p><strong>分类和标签</strong></p>
-<p>只有文章支持分类和标签，您可以在 Front-matter 中设置。在其他系统中，分类和标签听起来很接近，但是在 Hexo 中两者有着明显的差别：<strong>分类具有顺序性和层次性而标签没有顺序和层次</strong>。</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">- Diary</span><br><span class="line">tags:</span><br><span class="line">- PS3</span><br><span class="line">- Games</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>WordPress支持对一篇文章设置多个分类，而且这些分类可以是同级的，也可以是父子分类。但是Hexo不支持指定多个同级分类。下面的指定方法： categories:</p>
-</blockquote>
-<ul>
-<li>Diary</li>
-<li>Life</li>
-</ul>
-<p>会使分类<code>Life</code>成为<code>Diary</code>的子分类，而不是并列分类。因此，有必要为您的文章选择尽可能准确的分类.</p>
-<h3 id="4-4-文章摘要"><a href="#4-4-文章摘要" class="headerlink" title="4.4. 文章摘要"></a>4.4. 文章摘要</h3><p>设置文章摘要，我们只需在想显示为摘要的内容之后添 <code>&lt;!-- more --&gt;</code> 即可。像下面这样：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: hello hexo markdown</span><br><span class="line">date: 2016-11-16 18:11:25</span><br><span class="line">tags:</span><br><span class="line">- hello</span><br><span class="line">- hexo</span><br><span class="line">- markdown</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">我是短小精悍的文章摘要(๑•̀ㅂ•́) ✧</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">紧接着文章摘要的正文内容</span><br></pre></td></tr></table></figure>
-
-<p>这样，<code>&lt;!-- more --&gt;</code> 之前、文档配置参数之后中的内容便会被渲染为站点中的文章摘要。</p>
-<blockquote>
-<p>注意！文章摘要在文章详情页是正文中最前面的内容。</p>
-</blockquote>
-<h3 id="4-5-资源引用"><a href="#4-5-资源引用" class="headerlink" title="4.5. 资源引用"></a>4.5. 资源引用</h3><p>写个博客，有时候会想添加个图片或者其他形式的资源等等。有以下两种方式进行解决：</p>
-<ol>
-<li>使用绝对路径引用资源，在 Web 世界中就是资源的 URL</li>
-<li>使用相对路径引用资源</li>
-</ol>
-<p>对于使用相对路径引用资源的，我们可以使用 Hexo 提供的<strong>资源文件夹</strong>功能。</p>
-<p>使用文本编辑器打开站点根目录下的 <code>_ config.yml</code> 文件，将 <code>post_asset_folder</code> 值设置为 <code>true</code>。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>修改之后会开启 Hexo 的文章资源文件管理功能。Hexo 将会在我们每一次通过 <code>hexo new &lt;title&gt;</code> 命令创建新文章时自动创建一个同名文件夹，于是我们便可以将文章所引用的相关资源放到这个同名文件夹下，然后通过相对路径引用。例如，你把一个 <code>example.jpg</code> 图片放在了这个同名文件夹中，使用相对路径的常规 markdown 语法 <code>![](./example.jpg)</code>即可访问 。</p>
-<h3 id="5-网站发布"><a href="#5-网站发布" class="headerlink" title="5. 网站发布"></a>5. 网站发布</h3><p>首先执行下列命令生成相应的静态网页，生成的静态网页以及相关资源都会在<code>public</code>目录下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-1-用hexo-server"><a href="#5-1-用hexo-server" class="headerlink" title="5.1. 用hexo-server"></a>5.1. 用hexo-server</h3><p>hexo-server模块的主要命令如下，输入以下命令以启动服务器，您的网站会在 <code>http://localhost:4000</code> 下启动。在服务器启动期间，Hexo 会监视文件变动并自动更新，您无须重启服务器。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>如果您想要更改端口，或是在执行时遇到了 <code>EADDRINUSE</code> 错误，可以在执行时使用 <code>-p</code> 选项指定其他端口，如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server -p 5000</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>但是个人认为此方式比较适合用于调试网站，并不适合长时间的网站服务器，同时为了让这个命令在后台长时间运行，需要编写相应的脚本。</p>
-</blockquote>
-<h3 id="5-2-部署到Git上"><a href="#5-2-部署到Git上" class="headerlink" title="5.2. 部署到Git上"></a>5.2. 部署到Git上</h3><p>这个暂时没有尝试过，但是网络上很多都是关于部署到Git上的，可以自行谷歌或百度。</p>
-<h3 id="5-3-部署到Apache或者Nginx上"><a href="#5-3-部署到Apache或者Nginx上" class="headerlink" title="5.3. 部署到Apache或者Nginx上"></a>5.3. 部署到Apache或者Nginx上</h3><p>通过<code>hexo g</code>命令生成的都是静态网页，可以把生成的<code>public</code>目录中的文件，全都拷贝到网站根目录，然后启动apache或者nginx服务。</p>
-<h3 id="6-其他基础命令"><a href="#6-其他基础命令" class="headerlink" title="6. 其他基础命令"></a>6. 其他基础命令</h3><h3 id="6-1-清除缓存文件"><a href="#6-1-清除缓存文件" class="headerlink" title="6.1. 清除缓存文件"></a>6.1. 清除缓存文件</h3><p>为了避免不必要的错误，在生成静态文件前，强烈建议先运行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
-
-<p>上述命令会清除本地站点文件夹下的缓存文件（<code>db.json</code>）和已有的静态文件（<code>public</code>）。</p>
-<h3 id="7-参考链接"><a href="#7-参考链接" class="headerlink" title="7. 参考链接"></a>7. 参考链接</h3><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">文档hexo.io&#x2F;zh-cn&#x2F;docs&#x2F;</a></p>
-<p><a target="_blank" rel="noopener" href="https://lfkid.github.io/2016/11/16/Hexo%E6%95%99%E7%A8%8B%EF%BC%9A%EF%BC%88%E4%B8%89%EF%BC%89%E4%BD%BF%E7%94%A8Hexo%E5%86%99%E5%8D%9A%E5%AE%A2/">Hexo教程：（三）使用Hexo写博客</a></p>
-
+<h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h3><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a>是一个快速、简洁且高效的博客框架。Hexo 使用 <a target="_blank" rel="noopener" href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。即把用户的markdown文件，按照指定的主题解析成静态网页。</p>
+        
+          <p class="article-more-link">
+            <a href="/2022/05/26/how-to-use-hexo/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -423,19 +227,11 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2022/05/26/hello-world/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">

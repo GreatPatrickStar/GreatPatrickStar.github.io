@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>windows package manager chocolatey | GreatPatrickStar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="https:&#x2F;&#x2F;blog.csdn.net&#x2F;hffyyg&#x2F;article&#x2F;details&#x2F;83990873  Windows上的巧克力味Chocolatey详解作者：chszs，未经博主允许不得转载。经许可的转载需注明作者和博客主页：http:&#x2F;&#x2F;blog.csdn.net&#x2F;chszsChocolatey是什么？很简单，Chocolatey就是Windows系统的yum或apt-get。 一、C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows package manager chocolatey">
+<meta property="og:url" content="https://greatpatrickstar.github.io/2022/05/26/windows-package-manager-chocolatey/index.html">
+<meta property="og:site_name" content="GreatPatrickStar">
+<meta property="og:description" content="https:&#x2F;&#x2F;blog.csdn.net&#x2F;hffyyg&#x2F;article&#x2F;details&#x2F;83990873  Windows上的巧克力味Chocolatey详解作者：chszs，未经博主允许不得转载。经许可的转载需注明作者和博客主页：http:&#x2F;&#x2F;blog.csdn.net&#x2F;chszsChocolatey是什么？很简单，Chocolatey就是Windows系统的yum或apt-get。 一、C">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-26T02:45:59.000Z">
+<meta property="article:modified_time" content="2022-05-26T02:49:58.921Z">
+<meta property="article:author" content="GreatPatrickStar">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="GreatPatrickStar" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">GreatPatrickStar</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://greatpatrickstar.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-windows-package-manager-chocolatey" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/05/26/windows-package-manager-chocolatey/" class="article-date">
+  <time class="dt-published" datetime="2022-05-26T02:45:59.000Z" itemprop="datePublished">2022-05-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      windows package manager chocolatey
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hffyyg/article/details/83990873">https://blog.csdn.net/hffyyg/article/details/83990873</a></p>
+</blockquote>
+<p>Windows上的巧克力味Chocolatey详解<br>作者：chszs，未经博主允许不得转载。经许可的转载需注明作者和博客主页：<a target="_blank" rel="noopener" href="http://blog.csdn.net/chszs">http://blog.csdn.net/chszs</a><br>Chocolatey是什么？很简单，Chocolatey就是Windows系统的yum或apt-get。</p>
+<p>一、Chocolatey介绍<br>Chocolatey是一款专为Windows系统开发的、基于NuGet的包管理器工具，类似于Node.js的npm，MacOS的brew，Ubuntu的apt-get，它简称为choco。Chocolatey的设计目标是成为一个去中心化的框架，便于开发者按需快速安装应用程序和工具。</p>
+<p>Chocolatey的官网： <a target="_blank" rel="noopener" href="https://chocolatey.org/">https://chocolatey.org/</a></p>
+<p>Chcocolatey当前最新版本为0.9.10.3版。</p>
+<p>二、Chocolatey安装<br>要安装Chocolatey很容易，必须以管理员权限打开cmd.exe命令行提示，执行如下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((new-object net.webclient).DownloadString(&#x27;https://chocolatey.org/install.ps1&#x27;))&quot; &amp;&amp; SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</span><br></pre></td></tr></table></figure>
+
+<p>还有一种安装方法，使用PowerShell，同样必须以管理员权限打开PowerShell，执行如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iex ((new-object net.webclient).DownloadString(&#x27;https://chocolatey.org/install.ps1&#x27;))</span><br></pre></td></tr></table></figure>
+
+
+
+<p>三、Chocolatey用法<br>1、命令<br>search  - 搜索包 choco search something<br>list  - 列出包 choco list -lo<br>install  - 安装 choco install baretail<br>pin  - 固定包的版本，防止包被升级 choco pin windirstat<br>upgrade  - 安装包的升级 choco upgrade baretail<br>uninstall  - 安装包的卸载 choco uninstall baretail<br>安装Ruby Gem  - choco install compass -source ruby<br>安装Python Egg  - choco install sphynx -source python<br>安装IIS服务器特性  - choco install IIS -source windowsfeatures<br>安装Webpi特性  - choco install IIS7.5Express -source webpi<br>2、常用的一些命令<br>1）列出本地已安装的包</p>
+<p>choco list –local-only</p>
+<p>1<br>2）列出Windows系统已安装的软件</p>
+<p>choco list -li</p>
+<p>1<br>或使用</p>
+<p>choco list -lai</p>
+<p>1<br>3）升级所有已安装的包</p>
+<p>choco upgrade all -y</p>
+<p>1<br>四、Chocolatey的文件</p>
+<p>tools\chocolateyInstall.ps1<br>tools\chocolateyInstall\choco.exe<br>tools\chocolateyInstall\choco.exe.ignore<br>tools\chocolateyInstall\helpers\chocolateyInstaller.psm1<br>tools\chocolateyInstall\helpers\chocolateyScriptRunner.ps1<br>tools\chocolateyInstall\helpers\functions\Get-BinRoot.ps1<br>tools\chocolateyInstall\helpers\functions\Get-CheckSumValid.ps1<br>tools\chocolateyInstall\helpers\functions\Get-ChocolateyUnzip.ps1<br>tools\chocolateyInstall\helpers\functions\Get-ChocolateyWebFile.ps1<br>tools\chocolateyInstall\helpers\functions\Get-EnvironmentVariable.ps1<br>tools\chocolateyInstall\helpers\functions\Get-EnvironmentVariableNames.ps1<br>tools\chocolateyInstall\helpers\functions\Get-FtpFile.ps1<br>tools\chocolateyInstall\helpers\functions\Get-ProcessorBits.ps1<br>tools\chocolateyInstall\helpers\functions\Get-UACEnabled.ps1<br>tools\chocolateyInstall\helpers\functions\Get-VirusCheckValid.ps1<br>tools\chocolateyInstall\helpers\functions\Get-WebFile.ps1<br>tools\chocolateyInstall\helpers\functions\Get-WebHeaders.ps1<br>tools\chocolateyInstall\helpers\functions\Install-BinFile.ps1<br>tools\chocolateyInstall\helpers\functions\Install-ChocolateyDesktopLink.ps1<br>tools\chocolateyInstall\helpers\functions\Install-ChocolateyEnvironmentVariable.ps1<br>tools\chocolateyInstall\helpers\functions\Install-ChocolateyExplorerMenuItem.ps1<br>tools\chocolateyInstall\helpers\functions\Install-ChocolateyFileAssociation.ps1<br>tools\chocolateyInstall\helpers\functions\Install-ChocolateyInstallPackage.ps1<br>tools\chocolateyInstall\helpers\functions\Install-ChocolateyPackage.ps1<br>tools\chocolateyInstall\helpers\functions\Install-ChocolateyPath.ps1<br>tools\chocolateyInstall\helpers\functions\Install-ChocolateyPinnedTaskBarItem.ps1<br>tools\chocolateyInstall\helpers\functions\Install-ChocolateyPowershellCommand.ps1<br>tools\chocolateyInstall\helpers\functions\Install-ChocolateyShortcut.ps1<br>tools\chocolateyInstall\helpers\functions\Install-ChocolateyVsixPackage.ps1<br>tools\chocolateyInstall\helpers\functions\Install-ChocolateyZipPackage.ps1<br>tools\chocolateyInstall\helpers\functions\Set-EnvironmentVariable.ps1<br>tools\chocolateyInstall\helpers\functions\Start-ChocolateyProcessAsAdmin.ps1<br>tools\chocolateyInstall\helpers\functions\Test-ProcessAdminRights.ps1<br>tools\chocolateyInstall\helpers\functions\Uninstall-BinFile.ps1<br>tools\chocolateyInstall\helpers\functions\Uninstall-ChocolateyPackage.ps1<br>tools\chocolateyInstall\helpers\functions\UnInstall-ChocolateyZipPackage.ps1<br>tools\chocolateyInstall\helpers\functions\Update-SessionEnvironment.ps1<br>tools\chocolateyInstall\helpers\functions\Write-ChocolateyFailure.ps1<br>tools\chocolateyInstall\helpers\functions\Write-ChocolateySuccess.ps1<br>tools\chocolateyInstall\helpers\functions\Write-FileUpdateLog.ps1<br>tools\chocolateyInstall\LICENSE.txt<br>tools\chocolateyInstall\redirects\choco.exe<br>tools\chocolateyInstall\redirects\choco.exe.ignore<br>tools\chocolateyInstall\redirects\chocolatey.exe<br>tools\chocolateyInstall\redirects\chocolatey.exe.ignore<br>tools\chocolateyInstall\redirects\cinst.exe<br>tools\chocolateyInstall\redirects\cinst.exe.ignore<br>tools\chocolateyInstall\redirects\clist.exe<br>tools\chocolateyInstall\redirects\clist.exe.ignore<br>tools\chocolateyInstall\redirects\cpack.exe<br>tools\chocolateyInstall\redirects\cpack.exe.ignore<br>tools\chocolateyInstall\redirects\cpush.exe<br>tools\chocolateyInstall\redirects\cpush.exe.ignore<br>tools\chocolateyInstall\redirects\cuninst.exe<br>tools\chocolateyInstall\redirects\cuninst.exe.ignore<br>tools\chocolateyInstall\redirects\cup.exe<br>tools\chocolateyInstall\redirects\cup.exe.ignore<br>tools\chocolateyInstall\redirects\cver.exe<br>tools\chocolateyInstall\redirects\cver.exe.ignore<br>tools\chocolateyInstall\redirects\RefreshEnv.cmd<br>tools\chocolateyInstall\tools\7za.exe<br>tools\chocolateyInstall\tools\7za.exe.ignore<br>tools\chocolateyInstall\tools\7za.exe.manifest<br>tools\chocolateyInstall\tools\7zip.license.txt<br>tools\chocolateyInstall\tools\checksum.exe<br>tools\chocolateyInstall\tools\checksum.exe.ignore<br>tools\chocolateyInstall\tools\checksum.license.txt<br>tools\chocolateyInstall\tools\shimgen.exe<br>tools\chocolateyInstall\tools\shimgen.exe.ignore<br>tools\chocolateyInstall\tools\shimgen.license.txt<br>tools\chocolateysetup.psm1<br>tools\init.ps1<br>————————————————<br>版权声明：本文为CSDN博主「小丑鱼红色」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/hffyyg/article/details/83990873">https://blog.csdn.net/hffyyg/article/details/83990873</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://greatpatrickstar.github.io/2022/05/26/windows-package-manager-chocolatey/" data-id="cl3nq2tn100036sw31ke54jzl" data-title="windows package manager chocolatey" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/05/26/wsl-autostart-service/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          wsl autostart service
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/05/26/debian-install-redis/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">debian install redis</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/05/27/Annotation-Autowired-Resource/">Annotation-Autowired-Resource</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/27/RequestBody-and-RequestParam/">RequestBody and RequestParam</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/26/wsl-autostart-service/">wsl autostart service</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/26/windows-package-manager-chocolatey/">windows package manager chocolatey</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/26/debian-install-redis/">debian install redis</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 GreatPatrickStar<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>RequestBody and RequestParam | GreatPatrickStar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_38407462&#x2F;article&#x2F;details&#x2F;104486691 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;tiandi&#x2F;p&#x2F;15068325.html#:~:text&#x3D;%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%90%8C%E4%B8%80%E4%B8%AA%E6%8E%A5,%28%29%">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RequestBody and RequestParam">
+<meta property="og:url" content="https://greatpatrickstar.github.io/2022/05/27/RequestBody-and-RequestParam/index.html">
+<meta property="og:site_name" content="GreatPatrickStar">
+<meta property="og:description" content="https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_38407462&#x2F;article&#x2F;details&#x2F;104486691 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;tiandi&#x2F;p&#x2F;15068325.html#:~:text&#x3D;%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%90%8C%E4%B8%80%E4%B8%AA%E6%8E%A5,%28%29%">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-27T00:30:46.000Z">
+<meta property="article:modified_time" content="2022-05-27T00:45:00.690Z">
+<meta property="article:author" content="GreatPatrickStar">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="GreatPatrickStar" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">GreatPatrickStar</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://greatpatrickstar.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-RequestBody-and-RequestParam" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/05/27/RequestBody-and-RequestParam/" class="article-date">
+  <time class="dt-published" datetime="2022-05-27T00:30:46.000Z" itemprop="datePublished">2022-05-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      RequestBody and RequestParam
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38407462/article/details/104486691">https://blog.csdn.net/qq_38407462/article/details/104486691</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tiandi/p/15068325.html#:~:text=%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%90%8C%E4%B8%80%E4%B8%AA%E6%8E%A5,()%E5%8F%AF%E4%BB%A5%E6%9C%89%E5%A4%9A%E4%B8%AA%E3%80%82">https://www.cnblogs.com/tiandi/p/15068325.html#:~:text&#x3D;%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%90%8C%E4%B8%80%E4%B8%AA%E6%8E%A5,%28%29%E5%8F%AF%E4%BB%A5%E6%9C%89%E5%A4%9A%E4%B8%AA%E3%80%82</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38004638/article/details/99655322">https://blog.csdn.net/weixin_38004638/article/details/99655322</a></p>
+<h1 id="POST、GET、-RequestBody和-RequestParam区别"><a href="#POST、GET、-RequestBody和-RequestParam区别" class="headerlink" title="POST、GET、@RequestBody和@RequestParam区别"></a>POST、GET、@RequestBody和@RequestParam区别</h1><p>@RequestParam<br>注解@RequestParam接收的参数是来自HTTP请求体或请求url的QueryString中。</p>
+<p>RequestParam可以接受简单类型的属性，也可以接受对象类型。</p>
+<p>@RequestParam有三个配置参数：</p>
+<p>required 表示是否必须，默认为 true，必须。<br>defaultValue 可设置请求参数的默认值。<br>value 为接收url的参数名（相当于key值）。<br>@RequestParam用来处理 Content-Type 为 application&#x2F;x-www-form-urlencoded 编码的内容，Content-Type默认为该属性。@RequestParam也可用于其它类型的请求，例如：POST、DELETE等请求。</p>
+<p>所以在postman中，要选择body的类型为 x-www-form-urlencoded，这样在headers中就自动变为了 Content-Type : application&#x2F;x-www-form-urlencoded 编码格式。如下图所示：</p>
+<p>但是这样不支持批量插入数据啊，如果改用 json 字符串来传值的话，类型设置为 application&#x2F;json，点击发送的话，会报错，后台接收不到值，为 null。</p>
+<p>但可以入参后再转换，参考如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@PostMapping(&quot;/ali-receive&quot;)</span><br><span class="line"> public void aliReceive(@RequestParam(&quot;message&quot;) String message) &#123;</span><br><span class="line">             ReceiveLog receiveLog = JSON.parseObject(message, ReceiveLog.class);</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>解决Spring&#x2F;SpringBoot @RequestParam注解无法读取application&#x2F;json格式数据：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42536015/article/details/106906055">https://blog.csdn.net/weixin_42536015/article/details/106906055</a></p>
+<p>@RequestParam 接受JSON的字符串：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40470612/article/details/104225419">https://blog.csdn.net/qq_40470612/article/details/104225419</a></p>
+<p>不推荐使用@RequestParam接收application&#x2F;json，这时候就需要使用到@RequestBody。</p>
+<p>@RequestBody</p>
+<p>注解@RequestBody接收的参数是来自requestBody中，即请求体。一般用于处理非 Content-Type: application&#x2F;x-www-form-urlencoded编码格式的数据，比如：application&#x2F;json、application&#x2F;xml等类型的数据。</p>
+<p>就application&#x2F;json类型的数据而言，使用注解@RequestBody可以将body里面所有的json数据传到后端，后端再进行解析。</p>
+<p>GET请求中，因为没有HttpEntity，所以@RequestBody并不适用。</p>
+<p>POST请求中，通过HttpEntity传递的参数，必须要在请求头中声明数据的类型Content-Type，SpringMVC通过使用</p>
+<p>HandlerAdapter 配置的HttpMessageConverters来解析HttpEntity中的数据，然后绑定到相应的bean上。</p>
+<p>向表中批量插入数据</p>
+<p>举个批量插入数据的例子，Controller层的写法如下图所示：</p>
+<p>由于@RequestBody可用来处理 Content-Type 为 application&#x2F;json 编码的内容，所以在postman中，选择body的类型为row -&gt; JSON(application&#x2F;json)，这样在 Headers 中也会自动变为 Content-Type : application&#x2F;json 编码格式。body内的数据如下图所示：</p>
+<p>批量向表中插入两条数据，这里的 saveBatchNovel()方法已经封装了 JPA的 saveAll() 方法。body 里面的 json 语句的 key 值要与后端实体类的属性一一对应。</p>
+<p>注意：前端使用$.ajax的话，一定要指定 contentType: “application&#x2F;json;charset&#x3D;utf-8;”，默认为 application&#x2F;x-www-form-urlencoded。</p>
+<p>后端解析json数据</p>
+<p>上述示例是传递到实体类中的具体写法，那么如果传递到非实体类中，body里面的json数据需要怎么解析呢？我们再来看下面这个例子：</p>
+<p>在body中，我们还是输入上面的json数据，根据分析，上面的json数据是一个List数组内嵌套着map对象，那么在后台的接收形式可写为 List&lt;Map&lt;String, String&gt;&gt;，具体代码如下图所示：</p>
+<p>postman请求：</p>
+<p>控制台输出：</p>
+<p>得出结论，通过@RequestBody可以解析Body中json格式的数据。</p>
+<p>POST请求时<br>@RequestBody –&gt; JSON字符串部分</p>
+<p>@RequestParam –&gt; 请求参数部分</p>
+<p>application&#x2F;json格局图</p>
+<p>form-data、x-www-form-urlencoded格局图</p>
+<p>1、从content-type方面总结：<br>① form-data、x-www-form-urlencoded：不可以用@RequestBody；可以用@RequestParam。见postman的格局，这两种方式的时候没有json字符串部分。</p>
+<p>② application&#x2F;json：json字符串部分可以用@RequestBody；url中的?后面参数可以用@RequestParam。见postman的格局</p>
+<p>2、从两种注解方式总结：<br>@RequestBody</p>
+<p>(@RequestBody Map map)<br>(@RequestBody Object object)<br>application&#x2F;json时候可用<br>form-data、x-www-form-urlencoded时候不可用<br>@RequestParam</p>
+<p>(@RequestParam Map map)<br>application&#x2F;json时候，json字符串部分不可用，url中的?后面添加参数即可用，form-data、x-www-form-urlencoded时候可用，但是要将Headers里的Content-Type删掉<br>(@RequestParam String waterEleId,@RequestParam String enterpriseName)<br>application&#x2F;json时候，json字符串部分不可用，url中的?后面添加参数即可用<br>form-data、x-www-form-urlencoded时候可用，且参数可以没有顺序（即前端传过来的参数或者url中的参数顺序不必和后台接口中的参数顺序一致，只要字段名相同就可以），但是要将Headers里的Content-Type删掉<br>(@RequestParam Object object)<br>不管application&#x2F;json、form-data、x-www-form-urlencoded都不可用<br>既不是@RequestBody也不是@RequestParam，没有指定参数哪种接收方式</p>
+<p>(Map map)<br>(Object object)<br>application&#x2F;json时候：json字符串部分不可用，url中的?后面添加参数不可用。<br>因为没有指定，它也不知道到底是用json字符串部分还是?后面添加参数部分，所以干脆都不可以用<br>form-data、x-www-form-urlencoded时都不可用，见图二</p>
+<p>(HttpServletRequest request)<br>application&#x2F;json不可用<br>form-data、x-www-form-urlencoded时可用<br>GET请求<br>@RequestBody</p>
+<p>RequestBody – Map &#x2F; Object<br>GET请求中不可以使用@RequestBody<br>@RequestParam</p>
+<p>(@RequestParam Map map)<br>在url中的?后面添加参数即可使用<br>(@RequestParam String waterEleId,@RequestParam String enterpriseName)<br>在url中的?后面添加参数即可使用<br>(@RequestParam Object object)<br>GET请求中不可以使用<br>当使用GET请求时，通过postman添加?后面的参数，不用在url中自己一个一个拼，点击Params，在下面key-value中输入就自动拼接到url中</p>
+<p>举栗子<br>上传文件，包含了图中圈出来的两部分</p>
+<p>如果这样，没有@RequestParam，那么url?后的参数就拿不到</p>
+<p>@RequestMapping(value &#x3D; “&#x2F;leadingIn”, method &#x3D; RequestMethod.POST)<br>    public ResponseObj<Boolean> leadingIn(Map formData,<br>                                          HttpServletRequest request,<br>                                          Map&lt;String, InputStream&gt; files) {<br>}<br>如果control中这样接收，本来想formData只接收url?后的参数，结果将{ “retCode”: null, “data”: true }这部分内容也拿到了，真实意外之喜。字符串这部分内容还可以从request中取到，见下面完整方法。</p>
+<p>@RequestMapping(value &#x3D; “&#x2F;leadingIn”, method &#x3D; RequestMethod.POST)<br>    public ResponseObj<Boolean> leadingIn(@RequestParam Map formData,<br>                                          HttpServletRequest request,<br>                                          Map&lt;String, InputStream&gt; files) {<br>}<br>完整方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">    /**</span><br><span class="line">     * 导入</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(value = &quot;/leadingIn&quot;, method = RequestMethod.POST)</span><br><span class="line">    public ResponseObj&lt;Boolean&gt; leadingIn(@RequestParam Map formData,</span><br><span class="line">                                          HttpServletRequest request,</span><br><span class="line">                                          Map&lt;String, InputStream&gt; files) &#123;</span><br><span class="line">        //测试</span><br><span class="line">        try &#123;</span><br><span class="line">            MultipartHttpServletRequest mulRequest = (MultipartHttpServletRequest) request;</span><br><span class="line">            Set&lt;Map.Entry&lt;String, MultipartFile&gt;&gt; set = mulRequest.getFileMap().entrySet();</span><br><span class="line">            Map&lt;String, InputStream&gt; listFile = new LinkedHashMap&lt;&gt;();</span><br><span class="line">            System.out.println(&quot;个数&quot; + set.size());</span><br><span class="line">            for (Map.Entry&lt;String, MultipartFile&gt; each : set) &#123;</span><br><span class="line">                String fileName = each.getKey();</span><br><span class="line">                MultipartFile file = each.getValue();</span><br><span class="line">                //这里需要上传FTP</span><br><span class="line">                try &#123;</span><br><span class="line">                    listFile.put(fileName, file.getInputStream());</span><br><span class="line">                &#125; catch (Exception ex) &#123;</span><br><span class="line">                    return new ResponseObj&lt;&gt;(false, null);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">     </span><br><span class="line">            String formjson = mulRequest.getParameter(&quot;content&quot;);</span><br><span class="line">            ObjectMapper mapper = new ObjectMapper();</span><br><span class="line">            mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);</span><br><span class="line">            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span><br><span class="line"></span><br><span class="line">//            boolean result = iInstallWorkOrder.upLoadFile(listFile);</span><br><span class="line">            boolean result = true;</span><br><span class="line"></span><br><span class="line">            return new ResponseObj&lt;&gt;(result, null);</span><br><span class="line">        &#125; catch (Exception ex) &#123;</span><br><span class="line">            System.out.println(ex.toString());</span><br><span class="line">            return new ResponseObj&lt;&gt;(false, null);</span><br><span class="line">        &#125;</span><br><span class="line">     </span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>按F12看一下Network里对应请求：</p>
+<p>使用@RequestParam：Content-Type为application&#x2F;x-www-form-urlencoded，参数在FormData中</p>
+<p>使用@RequestBody：Content-Type为application&#x2F;json，参数在Request PayLoad中</p>
+<p>总结 •在GET请求中，不能使用@RequestBody。 •在POST请求，可以使用@RequestBody和@RequestParam，但是如果使用@RequestBody，对于参数转化的配置必须统一。<br>可以使用多个@RequestParam获取数据，@RequestBody不可以 举个例子，在SpringMVC配置了HttpMessageConverters处理栈中，指定json转化的格式，如Date转成‘yyyy-MM-dd’,则参数接收对象包含的字段如果是Date类型，就只能让客户端传递年月日的格式，不能传时分秒。因为不同的接口，它的参数可能对时间参数有不同的格式要求，所以这样做会让客户端调用同事对参数的格式有点困惑，所以说扩展性不高。 如果使用@RequestParam来接受参数，可以在接受参数的model中设置@DateFormat指定所需要接受时间参数的格式。 另外，使用@RequestBody接受的参数是不会被Servlet转化统一放在request对象的Param参数集中，@RequestParam是可以的。</p>
+<p>另外，还有一种应用场景，接口规范为resultful风格时，举个例子：如果要获取某个id下此条问题答案的查询次数的话，则后台就需要动态获取参数，其注解为@PathVariable，并且requestMapping中的value应为value&#x3D;”&#x2F;{id}&#x2F;queryNum”，截图如下：</p>
+<p>参考：</p>
+<p>@RequestParam @RequestBody @PathVariable 等参数绑定注解详解</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/walkerjong/article/details/7946109">https://blog.csdn.net/walkerjong/article/details/7946109</a></p>
+<p><a target="_blank" rel="noopener" href="https://my.oschina.net/u/3372000/blog/906217">https://my.oschina.net/u/3372000/blog/906217</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4981911d5e15">https://www.jianshu.com/p/4981911d5e15</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1414464">https://cloud.tencent.com/developer/article/1414464</a><br>————————————————<br>版权声明：本文为CSDN博主「陈晨辰呀」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38004638/article/details/99655322">https://blog.csdn.net/weixin_38004638/article/details/99655322</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://greatpatrickstar.github.io/2022/05/27/RequestBody-and-RequestParam/" data-id="cl3nq2tn000026sw38veq6ycm" data-title="RequestBody and RequestParam" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/05/27/Annotation-Autowired-Resource/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Annotation-Autowired-Resource
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/05/26/wsl-autostart-service/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">wsl autostart service</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/05/27/Annotation-Autowired-Resource/">Annotation-Autowired-Resource</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/27/RequestBody-and-RequestParam/">RequestBody and RequestParam</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/26/wsl-autostart-service/">wsl autostart service</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/26/windows-package-manager-chocolatey/">windows package manager chocolatey</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/26/debian-install-redis/">debian install redis</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 GreatPatrickStar<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

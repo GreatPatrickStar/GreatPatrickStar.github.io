@@ -71,6 +71,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-windows-port-proxy" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/02/windows-port-proxy/" class="article-date">
+  <time class="dt-published" datetime="2022-06-02T03:37:28.000Z" itemprop="datePublished">2022-06-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/06/02/windows-port-proxy/">windows port proxy</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="windows命令行实现端口转发"><a href="#windows命令行实现端口转发" class="headerlink" title="windows命令行实现端口转发"></a>windows命令行实现端口转发</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/han-guang-xue/p/15723213.html">https://www.cnblogs.com/han-guang-xue/p/15723213.html</a></p>
+<h2 id="两个不通的内网网段，-win10双网口，通过端口映射将一个内网的端口映射到其它不同内网网段的机器"><a href="#两个不通的内网网段，-win10双网口，通过端口映射将一个内网的端口映射到其它不同内网网段的机器" class="headerlink" title="两个不通的内网网段， win10双网口，通过端口映射将一个内网的端口映射到其它不同内网网段的机器"></a>两个不通的内网网段， win10双网口，通过端口映射将一个内网的端口映射到其它不同内网网段的机器</h2><ol>
+<li>首先查看 win10 机器的端口占用情况</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano</span><br><span class="line">netstat -ano | findstr 22 #linux grep, win10 系统下使用 findstr， 查看某个端口占用情况</span><br></pre></td></tr></table></figure>
+
+<p>2.现在137网段有一台机器 网口ip 192.168.137.206， 通过网线直连 win10的137网口， win10 双网口<br>ip设置为192.168.137.22， 192.168.0.18<br>\3. 使用命令 netsh</p>
+<blockquote>
+<p>该工具是个win10下很强大的工具，<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/networking/technologies/netsh">详情查看官网</a></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将本机的 22 端口映射到 192.168.137.206 22端口（linux远程端口）</span></span><br><span class="line">netsh interface portproxy add v4tov4 listenport=22 connectaddress=192.168.137.206 connectport=22</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示netsh相关配置</span></span><br><span class="line">netsh interface portproxy show all</span><br></pre></td></tr></table></figure>
+
+<p>4.通过其他的机器ip：192.168.0.108远程登陆 <code>ssh root@192.168.137.206</code> 连接测试<br>5.记得关闭防火墙</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://greatpatrickstar.github.io/2022/06/02/windows-port-proxy/" data-id="cl3wgx2im000068w3ghtt2zhy" data-title="windows port proxy" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Annotation-Autowired-Resource" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/05/27/Annotation-Autowired-Resource/" class="article-date">
@@ -584,7 +635,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
     </div>
   </div>
 
@@ -595,6 +646,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/06/02/windows-port-proxy/">windows port proxy</a>
+          </li>
         
           <li>
             <a href="/2022/05/27/Annotation-Autowired-Resource/">Annotation-Autowired-Resource</a>
@@ -610,10 +665,6 @@
         
           <li>
             <a href="/2022/05/26/windows-package-manager-chocolatey/">windows package manager chocolatey</a>
-          </li>
-        
-          <li>
-            <a href="/2022/05/26/debian-install-redis/">debian install redis</a>
           </li>
         
       </ul>

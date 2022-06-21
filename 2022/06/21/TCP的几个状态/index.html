@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>TCP的几个状态 | GreatPatrickStar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="TCP:SYN ACK FIN RST PSH URG简析 URG:Urget pointer is valid (紧急指针字段值有效) SYN: 表示建立连接 FIN: 表示关闭连接 ACK: 表示响应 PSH: 表示有 DATA数据传输 RST: 表示连接重置。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TCP的几个状态">
+<meta property="og:url" content="https://greatpatrickstar.github.io/2022/06/21/TCP%E7%9A%84%E5%87%A0%E4%B8%AA%E7%8A%B6%E6%80%81/index.html">
+<meta property="og:site_name" content="GreatPatrickStar">
+<meta property="og:description" content="TCP:SYN ACK FIN RST PSH URG简析 URG:Urget pointer is valid (紧急指针字段值有效) SYN: 表示建立连接 FIN: 表示关闭连接 ACK: 表示响应 PSH: 表示有 DATA数据传输 RST: 表示连接重置。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-06-21T09:19:15.000Z">
+<meta property="article:modified_time" content="2022-06-21T09:23:39.149Z">
+<meta property="article:author" content="GreatPatrickStar">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="GreatPatrickStar" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">GreatPatrickStar</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://greatpatrickstar.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-TCP的几个状态" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/21/TCP%E7%9A%84%E5%87%A0%E4%B8%AA%E7%8A%B6%E6%80%81/" class="article-date">
+  <time class="dt-published" datetime="2022-06-21T09:19:15.000Z" itemprop="datePublished">2022-06-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      TCP的几个状态
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>TCP:SYN ACK FIN RST PSH URG简析</p>
+<p>URG:Urget pointer is valid (紧急指针字段值有效)</p>
+<p><strong>SYN: 表示建立连接</strong></p>
+<p><strong>FIN: 表示关闭连接</strong></p>
+<p><strong>ACK: 表示响应</strong></p>
+<p><strong>PSH: 表示有 DATA数据传输</strong></p>
+<p><strong>RST: 表示连接重置。</strong></p>
+<span id="more"></span>
+
+<p>三次握手Three-way Handshake </p>
+<p>一个虚拟连接的建立是通过三次握手来实现的 </p>
+<ol>
+<li>(B) –&gt; [SYN] –&gt; (A)</li>
+</ol>
+<p>假如服务器A和客户机B通讯. 当A要和B通信时，B首先向A发一个SYN (Synchronize) 标记的包，告诉A请求建立连接. </p>
+<p>注意: 一个 SYN包就是仅SYN标记设为1的TCP包(参见TCP包头Resources). 认识到这点很重要，只有当A受到B发来的SYN包，才可建立连接，除此之外别无他法。因此，如果你的防火墙丢弃所有的发往外网接口的SYN包，那么你将不 能让外部任何主机主动建立连接。</p>
+<ol start="2">
+<li>(B) &lt;– [SYN&#x2F;ACK] &lt;–(A)</li>
+</ol>
+<p>接着，A收到后会发一个对SYN包的确认包(SYN&#x2F;ACK)回去，表示对第一个SYN包的确认，并继续握手操作. </p>
+<p>注意: SYN&#x2F;ACK包是仅SYN 和 ACK 标记为1的包.</p>
+<ol start="3">
+<li>(B) –&gt; [ACK] –&gt; (A)</li>
+</ol>
+<p>B收到SYN&#x2F;ACK 包,B发一个确认包(ACK)，通知A连接已建立。至此，三次握手完成，一个TCP连接完成 </p>
+<p>Note: ACK包就是仅ACK 标记设为1的TCP包. 需要注意的是当三此握手完成、连接建立以后，TCP连接的每个包都会设置ACK位</p>
+<p>这就是为何连接跟踪很重要的原因了. 没有连接跟踪,防火墙将无法判断收到的ACK包是否属于一个已经建立的连接.一般的包过滤(Ipchains)收到ACK包时,会让它通过(这绝对不是个 好主意). 而当状态型防火墙收到此种包时，它会先在连接表中查找是否属于哪个已建连接，否则丢弃该包 </p>
+<p>在TCP层，有个FLAGS字段，这个字段有以下几个标识：SYN, FIN, ACK, PSH, RST, URG.<br>其中，对于我们日常的分析有用的就是前面的五个字段。</p>
+<p>它们的含义是：</p>
+<ul>
+<li><p>URG:Urget pointer is valid (紧急指针字段值有效)</p>
+</li>
+<li><p>SYN: 表示建立连接</p>
+</li>
+<li><p>FIN: 表示关闭连接</p>
+</li>
+<li><p>ACK: 表示响应</p>
+</li>
+<li><p>PSH: 表示有 DATA数据传输</p>
+</li>
+<li><p>RST: 表示连接重置。</p>
+</li>
+</ul>
+<p>其中，ACK是可能与SYN，FIN等同时使用的，比如SYN和ACK可能同时为1，它表示的就是建立连接之后的响应，如果只是单个的一个SYN，它表示的只是建立连接。TCP的几次握手就是通过这样的ACK表现出来的。但SYN与FIN是不会同时为1的，因为前者表示的是建立连接，而后者表示的是断开连接。RST一般是在FIN之后才会出现为1的情况，表示的是连接重置。一般地，当出现FIN包或RST包时，我们便认为客户端与服务器端断开了连接；而当出现SYN和SYN＋ACK包时，我们认为客户端与服务器建立了一个连接。PSH为1的情况，一般只出现在 DATA内容不为0的包中，也就是说PSH为1表示的是有真正的TCP数据包内容被传递。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://greatpatrickstar.github.io/2022/06/21/TCP%E7%9A%84%E5%87%A0%E4%B8%AA%E7%8A%B6%E6%80%81/" data-id="cl4nylyb300047ow38sf9dqba" data-title="TCP的几个状态" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/06/21/ensp/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ensp</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/21/TCP%E7%9A%84%E5%87%A0%E4%B8%AA%E7%8A%B6%E6%80%81/">TCP的几个状态</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/21/ensp/">ensp</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/21/IP%E5%9C%B0%E5%9D%80%E7%9A%84%E5%88%86%E7%B1%BB%EF%BC%9AA%E3%80%81B%E3%80%81C%E3%80%81D%E3%80%81E%E4%BA%94%E7%B1%BBIP%E5%9C%B0%E5%9D%80%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%92%E5%88%86%E7%9A%84/">IP地址的分类：A、B、C、D、E五类IP地址是如何划分的</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/21/hub-whatisit/">hub-whatisit</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/21/port-common/">port-common</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 GreatPatrickStar<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
